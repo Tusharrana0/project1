@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Boxes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            margin: 0;
+        }
+        .box {
+            width: 150px;
+            padding: 20px;
+            text-align: center;
+            background-color: gray;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+        .expanded {
+            width: 200px;
+            padding: 30px;
+        }
+        .options {
+            display: none;
+            margin-top: 10px;
+        }
+        .expanded .options {
+            display: block;
+        }
+        .color-option, .size-option {
+            display: inline-block;
+            padding: 5px;
+            margin: 5px;
+            cursor: pointer;
+            border: 1px solid #fff;
+            border-radius: 4px;
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" onclick="toggleBox(this)">Click to Expand
+        <div class="options">
+            <p>Select Color:</p>
+            <span class="color-option" onclick="changeColor(event, 'red')">Red</span>
+            <span class="color-option" onclick="changeColor(event, 'blue')">Blue</span>
+            <span class="color-option" onclick="changeColor(event, 'green')">Green</span>
+            <p>Select Size:</p>
+            <span class="size-option" onclick="changeSize(event, 'small')">Small</span>
+            <span class="size-option" onclick="changeSize(event, 'medium')">Medium</span>
+            <span class="size-option" onclick="changeSize(event, 'large')">Large</span>
+        </div>
+    </div>
+    <div class="box" onclick="toggleBox(this)">Click to Expand
+        <div class="options">
+            <p>Select Color:</p>
+            <span class="color-option" onclick="changeColor(event, 'red')">Red</span>
+            <span class="color-option" onclick="changeColor(event, 'blue')">Blue</span>
+            <span class="color-option" onclick="changeColor(event, 'green')">Green</span>
+            <p>Select Size:</p>
+            <span class="size-option" onclick="changeSize(event, 'small')">Small</span>
+            <span class="size-option" onclick="changeSize(event, 'medium')">Medium</span>
+            <span class="size-option" onclick="changeSize(event, 'large')">Large</span>
+        </div>
+    </div>
+    <div class="box" onclick="toggleBox(this)">Click to Expand
+        <div class="options">
+            <p>Select Color:</p>
+            <span class="color-option" onclick="changeColor(event, 'red')">Red</span>
+            <span class="color-option" onclick="changeColor(event, 'blue')">Blue</span>
+            <span class="color-option" onclick="changeColor(event, 'green')">Green</span>
+            <p>Select Size:</p>
+            <span class="size-option" onclick="changeSize(event, 'small')">Small</span>
+            <span class="size-option" onclick="changeSize(event, 'medium')">Medium</span>
+            <span class="size-option" onclick="changeSize(event, 'large')">Large</span>
+        </div>
+    </div>
+    
+    <script>
+        function toggleBox(element) {
+            element.classList.toggle("expanded");
+        }
+        function changeColor(event, color) {
+            event.stopPropagation();
+            event.target.closest(".box").style.backgroundColor = color;
+        }
+        function changeSize(event, size) {
+            event.stopPropagation();
+            let box = event.target.closest(".box");
+            box.style.width = size === "small" ? "120px" : size === "medium" ? "150px" : "200px";
+        }
+    </script>
+</body>
+</html>
